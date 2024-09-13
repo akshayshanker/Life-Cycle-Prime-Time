@@ -100,7 +100,7 @@ The 'value' of having a given amount of market resources $\mLvl_{t}$ right now, 
 In formal mathematical terms, the consumer's objective is to maximize present discounted utility from consumption over a life cycle that ends no later than date $T$ (often set to age 120):
 
 \begin{equation}
-    \pmb{\vFunc}_{t}(\mLvl_{t},\pLvl_{t}) = \max_{\{\cFunc\}_{t}^{T}} ~ \uFunc(\cLvl_{t})+\Ex_{t}\left[\sum_{n=1}^{T-t} \Alive_{t}^{t+n}{\DiscFac}^{n} \uFunc(\cLvl_{t+n}) \right] \label{eq:lifecyclemax}
+    \pmb{\vFunc}_{t}(\mLvl_{t},\pLvl_{t}) = \max_{\{\cLvL_{t}\}_{t}^{T}} ~ \uFunc(\cLvl_{t})+\Ex_{t}\left[\sum_{n=1}^{T-t} \Alive_{t}^{t+n}{\DiscFac}^{n} \uFunc(\cLvl_{t+n}) \right] \label{eq:lifecyclemax}
 \end{equation}
 
 \begin{align}
@@ -128,9 +128,9 @@ This gives us the following description of the dynamics of permanent income $\pL
 \end{align}
 where the second line follows from the first because the expected value of the permanent shock is $\Ex_{t}[\permShk]=1$.
 
-The transitory shock to income has two modes. In unemployment spells, the consumer earns no income; we assume that such spells occur with probability $\pZero$.If the consumer remains employed, we will assume that the income shocks are lognormally distributed:[^betterunemp]
+The transitory shock to income has two modes. In unemployment spells, the consumer earns no income; we assume that such spells occur with probability $\pZero$. If the consumer remains employed, we will assume that the income shocks are lognormally distributed:[^betterunemp]
 \begin{align}
-    \tranShkEmp_{s} = &
+    \tranShkEmp_{t} = &
     \begin{cases}
         0\phantom{/\pZero} & \text{with probability $\pZero>0$}
         \\ \xi_{s}/\pZero & \text{with probability $(1-\pZero)$}
@@ -141,10 +141,12 @@ The transitory shock to income has two modes. In unemployment spells, the consum
 
 It is conventional to assume that shocks to permanent income and to the transitory income of the employed are lognormally distributed:
 \begin{align}
-    \log \permShk_{s} \thicksim \mathcal{N}(-\sigma_{[\permShk, t]}^{2}/2,\sigma_{[\permShk, t]}^{2})
-    \\ \log \xi_{s}\thicksim \mathcal{N}(-\sigma_{[\xi, t]}^{2}/2,\sigma_{[\xi, t]}^{2})
+    \log \permShk_{t} \thicksim \mathcal{N}(-\sigma_{[\permShk, t]}^{2}/2,\sigma_{[\permShk, t]}^{2})
+    \\ \log \xi_{t}\thicksim \mathcal{N}(-\sigma_{[\xi, t]}^{2}/2,\sigma_{[\xi, t]}^{2})
 \end{align}
 which, together with the other assumptions, guarantee that the expected value of the transitory and of the permanent shocks are both 1: $\Ex_{t}[\permShk_{t+1}]=\Ex_{t}[\tranShk_{t+1}]=1$. (We use standard calibrations of both of these shock processes.)
+
+%% AS: \thicksim does not render in the pdf?
 
 Under the assumptions we have made about the structure of the utility function (homotheticity) and budget constraint (linearity and geometric returns), it is possible to recast the problem entirely in terms of *ratios* of the model variables to permanent income $\pLvl$. So, for example, italic $\cNrm = \cLvl/\pLvl$ is the ratio of the (boldface) level of consumption to the level of permanent income $\pLvl$ (see @BufferStockTheory for the math).
 
@@ -174,9 +176,9 @@ and the consumer is assumed to make the optimal choice of portfolio share:
 
 The consumer's objective in the consumption stage of the problem can be expressed in Bellman form as:
 \begin{align}
-    {\vFunc}_{t}({\mNrm}_{t}) & = \max_{\{\cNrm_{t}\}} ~ \uFunc(\cNrm_{t})+\Alive_{t+1} \mathfrak{v}_{t}(\aNrm_{t})
+    {\vFunc}_{t}({\mNrm}_{t}) & = \max_{\cNrm_{t}} ~ \uFunc(\cNrm_{t})+\Alive_{t+1} \mathfrak{v}_{t}(\aNrm_{t})
     \\ & \text{s.t.} &
-    \\ \aNrm_{t} & = {\mNrm}_{t}-\cNrm_{t}
+    \\ \aNrm_{t} & = {\mNrm}_{t}-\cNrm_{t}, \,\, \mNrm_{t}\geq \cNrm_{t}\geq 0
     % \\ {\mNrm}_{t+1} & = \aNrm_{t}\RNrm_{t+1} + ~\tranShkEmp_{t+1}
 \end{align}
 
@@ -243,6 +245,8 @@ The literature has commonly used a 'warm glow utility from bequests' motive of t
     \bqstNrm(a) & = \alpha\frac{(a+\underline{a})^{1-\CRRA}}{1-\CRRA}
 \end{align}
 where the $\CRRA$ coefficient is the same as in the utility function for consumption (see, e.g., @deNardiBequest), and the $\alpha$ coefficient controls the importance of the bequest motive relative to the utility from consumption.
+
+%% AS: mention what underline{a} means? Min assets after which someone cares about the bequest. Bequest is a luxury good due to \underline{a}. 
 
 ## Wealth in the Utility Function
 
