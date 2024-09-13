@@ -80,6 +80,10 @@ For purposes like 401(k) or other pension plan design, the optimization problem 
 
 [^planprovideradvantage]: One way to accommodate this requirement would be to limit the empirical sample used to estimate the model to childless people. This might not be feasible with public datasets like the SCF because the sample sizes might be too small; but with large administrative data of the kind available to 401(k) providers it should be possible.
 
+%% AS: Employer defaults have a significant effect on the level of contributions, so employers do "control" the magnitude conditional on the various behavioural frictions. 
+%% I know more about Aust.: we have a government minimum mandate. However, the portfolio and fund defaults have a *significant* impact on actual portfolios. Not only do most people stick to the defaults, but people's decisions seem shaped by the suggestions of funds etc. 
+%% I do not know much about the legal details of whether funds can or cannot include the bequest motive.
+
 ## The Baseline Academic Models
 
 (lcp-model)=
